@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logistik | Palu-Cater</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .map-placeholder {
+            background: #e0e0e0;
+            border: 2px dashed #bbb;
+            border-radius: 15px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #777;
+            flex: 2;
+        }
+        .delivery-list {
+            flex: 1;
+        }
+        .courier-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 5px solid #0f96d6;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .status-tag {
+            font-size: 11px;
+            background: #0f96d6;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            float: right;
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div class="sidebar">
+        <h2>Palu-Cater</h2>
+        <hr>
+        <p onclick="window.location.href='/'" style="cursor:pointer">🏠 Dashboard</p>
+        <p onclick="window.location.href='/input-order'" style="cursor:pointer">📝 Pesanan Baru</p>
+        <p onclick="window.location.href='/inventory'" style="cursor:pointer">🍏 Stok Dapur</p>
+        <p style="color: #0f96d6; font-weight: bold;">🚚 Logistik</p>
+        <p onclick="window.location.href='/report'" style="cursor:pointer">📊 Laporan Final</p>
+        <p style="margin-top:50px"><a href="/login" style="color:#e74c3c; text-decoration:none">🚪 Logout</a></p>
+    </div>
+
+    <div class="content">
+        <h1>Monitoring Logistik & Pengiriman</h1>
+        <div style="display: flex; gap: 20px;">
+            <div class="map-placeholder" style="background: #f8f9fa; border: 2px dashed #0f96d6; color: #0f96d6;">
+                <div style="padding: 20px;">
+                    <i style="font-size: 50px;">📍</i>
+                    <p><strong>Visualisasi Monitoring Logistik</strong><br>
+                    <span style="color: #666; font-size: 13px;">Silakan tempel screenshot Google Maps wilayah Palu di area ini pada dokumen Word Anda.</span></p>
+                </div>
+            </div>
+            </div>
+
+            <div class="delivery-list">
+                <h3>Kurir Sedang Bertugas</h3>
+                {% for d in deliveries %}
+                <div class="courier-card">
+                    <span class="status-tag">{{ d.status }}</span>
+                    <strong>{{ d.kurir }}</strong><br>
+                    <small style="color: #666;">Destinasi: {{ d.tujuan }}</small><br>
+                    <small style="color: #27ae60;">Estimasi: {{ d.estimasi }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
