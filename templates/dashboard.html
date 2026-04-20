@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | Palu-Cater</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="sidebar">
+        <h2>Palu-Cater</h2>
+        <hr>
+        <p onclick="window.location.href='/'" style="cursor:pointer">🏠 Dashboard</p>
+        <p onclick="window.location.href='/input-order'" style="cursor:pointer">📝 Pesanan Baru</p>
+        <p onclick="window.location.href='/inventory'" style="cursor:pointer">🍏 Stok Dapur</p>
+        <p onclick="window.location.href='/delivery'" style="cursor:pointer">🚚 Logistik</p>
+        <p onclick="window.location.href='/report'" style="cursor:pointer">📊 Laporan Final</p>
+        <p style="margin-top:50px"><a href="/login" style="color:#e74c3c; text-decoration:none">🚪 Logout</a></p>
+    </div>
+    <div class="content">
+        <h1>Ringkasan Bisnis - Kota Palu</h1>
+        <div class="stats">
+            <div class="stat-box"><h3>Pesanan Aktif</h3><h2>15</h2></div>
+            <div class="stat-box" style="border-top-color:#27ae60"><h3>Omzet Hari Ini</h3><h2>Rp 4.150.000</h2></div>
+        </div>
+        <table>
+            <tr>
+                <th>Instansi</th>
+                <th>Wilayah</th>
+                <th>Status</th>
+                <th>Total</th>
+            </tr>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.customer }}</td>
+                <td>{{ order.wilayah }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.total }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
