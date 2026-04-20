@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stok Bahan | Palu-Cater</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .badge-status { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; color: white; }
+        .bg-aman { background: #27ae60; }
+        .bg-menipis { background: #f39c12; }
+        .bg-kritis { background: #e74c3c; }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div class="sidebar">
+        <h2>Palu-Cater</h2>
+        <hr>
+        <p onclick="window.location.href='/'" style="cursor:pointer">🏠 Dashboard</p>
+        <p onclick="window.location.href='/input-order'" style="cursor:pointer">📝 Pesanan Baru</p>
+        <p onclick="window.location.href='/inventory'" style="cursor:pointer">🍏 Stok Dapur</p>
+        <p onclick="window.location.href='/delivery'" style="cursor:pointer">🚚 Logistik</p>
+        <p onclick="window.location.href='/report'" style="cursor:pointer">📊 Laporan Final</p>     
+        <p style="margin-top:50px"><a href="/login" style="color:#e74c3c; text-decoration:none">🚪 Logout</a></p>
+    </div>
+    <div class="content">
+        <h1>Manajemen Inventaris Dapur</h1>
+        <div class="stats">
+            <div class="stat-box" style="border-top-color: #e74c3c;">
+                <h3>Bahan Kritis</h3>
+                <h2>1 Item</h2>
+            </div>
+            <div class="stat-box" style="border-top-color: #27ae60;">
+                <h3>Total Bahan Baku</h3>
+                <h2>24 Item</h2>
+            </div>
+        </div>
+        
+        <div class="card" style="width: 100%; text-align: left;">
+            <h3>Daftar Stok Bahan Baku (Real-time)</h3>
+            <table>
+                <tr>
+                    <th>Nama Bahan Baku</th>
+                    <th>Stok Tersisa</th>
+                    <th>Satuan</th>
+                    <th>Status Gudang</th>
+                    <th>Aksi</th>
+                </tr>
+                {% for item in inventory %}
+                <tr>
+                    <td>{{ item.bahan }}</td>
+                    <td>{{ item.stok }}</td>
+                    <td>{{ item.satuan }}</td>
+                    <td>
+                        <span class="badge-status 
+                            {% if item.status == 'Aman' %}bg-aman
+                            {% elif item.status == 'Menipis' %}bg-menipis
+                            {% else %}bg-kritis{% endif %}">
+                            {{ item.status }}
+                        </span>
+                    </td>
+                    <td><button style="padding: 5px 10px; cursor: pointer;">Update Stok</button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
