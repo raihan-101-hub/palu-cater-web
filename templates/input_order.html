@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Pesanan | Palu-Cater</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="sidebar">
+        <h2>Palu-Cater</h2>
+        <hr>
+        <p onclick="window.location.href='/'" style="cursor:pointer">🏠 Dashboard</p>
+        <p onclick="window.location.href='/input-order'" style="cursor:pointer">📝 Pesanan Baru</p>
+        <p onclick="window.location.href='/inventory'" style="cursor:pointer">🍏 Stok Dapur</p>
+        <p onclick="window.location.href='/delivery'" style="cursor:pointer">🚚 Logistik</p>
+        <p onclick="window.location.href='/report'" style="cursor:pointer">📊 Laporan Final</p>
+        <p style="margin-top:50px"><a href="/login" style="color:#e74c3c; text-decoration:none">🚪 Logout</a></p>
+    </div>
+    <div class="content">
+        <h1>Input Pesanan Baru</h1>
+        <div class="card" style="width: 100%; text-align: left; max-width: 700px; margin: 0 auto;">
+            <form>
+                <div class="form-group">
+                    <label>Nama Pelanggan / Instansi</label>
+                    <input type="text" placeholder="Masukkan nama pemesan...">
+                </div>
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <label>Wilayah Pengiriman</label>
+                        <select>
+                            <option>Palu Timur</option>
+                            <option>Palu Barat</option>
+                            <option>Palu Selatan</option>
+                            <option>Palu Utara</option>
+                            <option>Sigi / Donggala</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Tanggal Acara</label>
+                        <input type="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Pilihan Paket Menu</label>
+                    <select>
+                        <option>Paket Nasi Kuning Palu (Lengkap)</option>
+                        <option>Paket Kaledo Tradisional</option>
+                        <option>Paket Nasi Kotak Ayam Bakar</option>
+                        <option>Paket Prasmanan VIP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah (Porsi)</label>
+                    <input type="number" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label>Catatan Khusus</label>
+                    <textarea rows="3" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
+                </div>
+                <button type="button" class="btn btn-register">SIMPAN PESANAN</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
