@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laporan Keuangan | Palu-Cater</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .chart-container {
+            display: flex;
+            align-items: flex-end; /* Supaya batang mulai dari bawah */
+            gap: 25px;
+            height: 300px;
+            padding: 20px;
+            border-bottom: 3px solid #1a1a2e;
+            border-left: 3px solid #1a1a2e;
+            margin-top: 20px;
+            background: #f9f9f9;
+        }
+        .bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%; /* Wajib ada supaya align-items: flex-end bekerja */
+            justify-content: flex-end;
+        }
+        .bar {
+            width: 100%;
+            min-width: 40px; /* Supaya batang punya lebar yang jelas */
+            background: #0f96d6; /* Warna biru Palu-Cater */
+            border-radius: 5px 5px 0 0;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .bar-label { font-size: 14px; margin-top: 10px; font-weight: bold; color: #1a1a2e; }
+        .bar-value { font-size: 12px; color: #0f96d6; margin-bottom: 5px; font-weight: bold; }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div class="sidebar">
+        <h2>Palu-Cater</h2>
+        <hr>
+        <p onclick="window.location.href='/'" style="cursor:pointer">🏠 Dashboard</p>
+        <p onclick="window.location.href='/inventory'" style="cursor:pointer">🍏 Stok Dapur</p>
+        <p onclick="window.location.href='/delivery'" style="cursor:pointer">🚚 Logistik</p>
+        <p style="color: #0f96d6; font-weight: bold;">📊 Laporan Final</p>
+        <p style="margin-top:50px"><a href="/login" style="color:#e74c3c; text-decoration:none">🚪 Logout</a></p>
+    </div>
+
+    <div class="content">
+        <h1>Laporan Realisasi Pendapatan</h1>
+        <div style="display: flex; gap: 20px;">
+            <div class="card" style="flex: 2;">
+                <h3>Statistik Penjualan per Bulan</h3>
+                <div class="chart-container">
+                    <div class="bar-group">
+                        <span class="bar-value">12jt</span>
+                        <div class="bar" style="height: 40%;"></div>
+                        <span class="bar-label">Jan</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">19jt</span>
+                        <div class="bar" style="height: 65%;"></div>
+                        <span class="bar-label">Feb</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">25jt</span>
+                        <div class="bar" style="height: 85%;"></div>
+                        <span class="bar-label">Mar</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">15jt</span>
+                        <div class="bar" style="height: 50%;"></div>
+                        <span class="bar-label">Apr</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="flex: 1; text-align: left;">
+                <h3>Kesimpulan</h3>
+                <p>Berdasarkan data di samping, pendapatan tertinggi tercapai pada bulan <strong>Maret</strong>.</p>
+                <hr>
+                <small>Dicetak otomatis oleh Sistem Palu-Cater</small>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
