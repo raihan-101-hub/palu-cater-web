@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar | Palu-Cater</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h2>DAFTAR AKUN</h2>
+        <p>Buat akses baru staf Palu-Cater</p>
+        <input type="text" placeholder="Nama Lengkap">
+        <input type="text" placeholder="Username Baru">
+        <input type="password" placeholder="Buat Password">
+        <button class="btn btn-register" onclick="window.location.href='/login'">DAFTAR SEKARANG</button>
+        <a href="/login" class="link">Sudah punya akun? Login</a>
+    </div>
+</body>
+</html>
